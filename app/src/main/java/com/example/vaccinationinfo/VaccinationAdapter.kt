@@ -33,7 +33,6 @@ class VaccinationAdapter(var dataSet: List<Vaccination>) :
         viewHolder.textViewCountry.text = vaccination.country
         viewHolder.textViewCount.text = vaccination.timeline.values.last().toString()
         viewHolder.layout.setOnClickListener {
-            // Toast.makeText(it.context , "Hi, you clicked on ${hero.name}", Toast.LENGTH_SHORT).show()
             val context = viewHolder.layout.context
             val heroDetailIntent = Intent(context, VaccinationDetailActivity::class.java).apply {
                 putExtra(VaccinationDetailActivity.EXTRA_VAX, vaccination)
