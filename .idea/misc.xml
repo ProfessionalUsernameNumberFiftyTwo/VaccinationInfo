@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28306159420289856" />
         <entry key="app/src/main/res/layout/activity_vaccination_detail.xml" value="0.1537037037037037" />
+        <entry key="app/src/main/res/layout/activity_vaccination_list.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/item_vaccination.xml" value="0.335" />
       </map>
     </option>

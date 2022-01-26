@@ -31,7 +31,7 @@ class VaccinationAdapter(var dataSet: List<Vaccination>) :
         // contents of the view with that element
         val vaccination = dataSet[position]
         viewHolder.textViewCountry.text = vaccination.country
-        //viewHolder.textViewCount.text = vaccination.timeline
+        viewHolder.textViewCount.text = vaccination.timeline.values.last().toString()
         viewHolder.layout.setOnClickListener {
             // Toast.makeText(it.context , "Hi, you clicked on ${hero.name}", Toast.LENGTH_SHORT).show()
             val context = viewHolder.layout.context

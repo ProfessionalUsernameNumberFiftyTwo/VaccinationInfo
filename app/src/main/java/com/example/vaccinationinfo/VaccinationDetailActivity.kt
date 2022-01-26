@@ -17,8 +17,8 @@ class VaccinationDetailActivity : AppCompatActivity() {
         binding = ActivityVaccinationDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val vaccination = intent.getParcelableArrayExtra<Vaccination>(EXTRA_VAX)
-//        binding.textViewVaccinationDetailCountry.text = vaccination?.country
-//
+    val vaccination = intent.getParcelableExtra<Vaccination>(EXTRA_VAX)
+    binding.textViewVaccinationDetailCountry.text = vaccination?.country
+    binding.textViewVaccinationDetailCount.text = vaccination?.timeline?.values?.last().toString()
     }
 }
