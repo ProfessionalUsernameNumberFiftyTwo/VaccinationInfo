@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Vaccination(
     val country: String,
-    val timeline: Map<String,Int>
+    val timeline: Map<String,Long>
 ) : Parcelable, Comparable<Vaccination> {
     override fun compareTo(other: Vaccination): Int {
         return this.country.compareTo(other.country)
