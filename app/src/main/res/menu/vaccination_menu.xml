@@ -2,10 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/sort_by_country_name"
         android:title="Sort by Country Name" />
-    <item android:id="@+id/sort_by_country_name_descending"
-        android:title="Sort by Country Name Descending" />
-    <item android:id="@+id/sort_by_vaccine_count"
-        android:title="Sort by Vaccine Count" />
-    <item android:id="@+id/sort_by_vaccine_count_descending"
-        android:title="Sort by Vaccine Count Descending" />
+    <item android:id="@+id/sort_by_total_vaxxed"
+        android:title="Sort by Total Vaxxed" />
+    <item android:id="@+id/sort_by_largest_increase"
+        android:title="Sort by Largest Increase in 10 Days" />
 </menu>

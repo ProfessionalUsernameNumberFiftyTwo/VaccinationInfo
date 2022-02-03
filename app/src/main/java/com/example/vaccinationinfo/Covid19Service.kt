@@ -8,5 +8,6 @@ interface Covid19Service {
     @GET("vaccine/coverage/countries")
     fun getVaccinations(@Query("lastdays") lastDays : Int) : Call<List<Vaccination>>
 
-
+    @GET("all")
+    fun getWorldwideInfo() : Call<List<WorldwideInfo>>
 }

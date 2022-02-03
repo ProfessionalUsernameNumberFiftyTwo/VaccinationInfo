@@ -42,6 +42,21 @@ class VaccinationListActivity : AppCompatActivity() {
         
         val vaccineApi = RetrofitHelper.getInstance().create(Covid19Service::class.java)
         val vaccineCall = vaccineApi.getVaccinations(10)
+        val worldwideCall = vaccineApi.getWorldwideInfo()
+
+        worldwideCall.enqueue(object : Callback<List<WorldwideInfo>> {
+            override fun onResponse(
+                call: Call<List<WorldwideInfo>>,
+                response: Response<List<WorldwideInfo>>
+            ) {
+                Log.d(TAG, "onResponse: ${response.body()}")
+            }
+
+            override fun onFailure(call: Call<List<WorldwideInfo>>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
         
         vaccineCall.enqueue(object : Callback<List<Vaccination>> {
             override fun onResponse(
@@ -76,18 +91,13 @@ class VaccinationListActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
                 true
             }
-            R.id.sort_by_vaccine_count -> {
-                sortByCount()
+            R.id.sort_by_total_vaxxed -> {
+                sortByTotal()
                 adapter.notifyDataSetChanged()
                 true
             }
-            R.id.sort_by_country_name_descending -> {
-                sortByNameDescending()
-                adapter.notifyDataSetChanged()
-                true
-            }
-            R.id.sort_by_vaccine_count_descending -> {
-                sortByCountDescending()
+            R.id.sort_by_largest_increase -> {
+                sortByIncrease()
                 adapter.notifyDataSetChanged()
                 true
             }
@@ -95,20 +105,16 @@ class VaccinationListActivity : AppCompatActivity() {
         }
     }
 
-    private fun sortByCount() {
-        adapter.dataSet = adapter.dataSet.sortedBy { it.timeline.values.last() }
+    private fun sortByTotal() {
+        adapter.dataSet = adapter.dataSet.sortedByDescending { it.timeline.values.last() }
     }
 
-    private fun sortByCountDescending() {
-        adapter.dataSet = adapter.dataSet.sortedByDescending { it.timeline.values.last() }
+    private fun sortByIncrease() {
+        adapter.dataSet = adapter.dataSet.sortedByDescending { it.largestIncrease() }
     }
 
     private fun sortByName() {
         adapter.dataSet = adapter.dataSet.sorted()
-    }
-
-    private fun sortByNameDescending() {
-        adapter.dataSet = adapter.dataSet.sortedDescending()
     }
 
 }
