@@ -19,6 +19,11 @@ class VaccinationDetailActivity : AppCompatActivity() {
 
     val vaccination = intent.getParcelableExtra<Vaccination>(EXTRA_VAX)
     binding.textViewVaccinationDetailCountry.text = vaccination?.country
-    binding.textViewVaccinationDetailCount.text = vaccination?.timeline?.toList().toString()
+    //binding.textViewVaccinationDetailCount.text = vaccination?.timeline?.toList().toString()
+        var timelineText = ""
+        for (i in vaccination!!.timeline.toList()) {
+            timelineText += i.first + ": " + i.second.toString() + "\n"
+        }
+        binding.textViewVaccinationDetailCount.text = timelineText
     }
 }

@@ -44,15 +44,15 @@ class VaccinationListActivity : AppCompatActivity() {
         val vaccineCall = vaccineApi.getVaccinations(10)
         val worldwideCall = vaccineApi.getWorldwideInfo()
 
-        worldwideCall.enqueue(object : Callback<List<WorldwideInfo>> {
+        worldwideCall.enqueue(object : Callback<WorldwideInfo> {
             override fun onResponse(
-                call: Call<List<WorldwideInfo>>,
-                response: Response<List<WorldwideInfo>>
+                call: Call<WorldwideInfo>,
+                response: Response<WorldwideInfo>
             ) {
                 Log.d(TAG, "onResponse: ${response.body()}")
             }
 
-            override fun onFailure(call: Call<List<WorldwideInfo>>, t: Throwable) {
+            override fun onFailure(call: Call<WorldwideInfo>, t: Throwable) {
                 Log.d(TAG, "onFailure: ${t.message}")
             }
 
@@ -63,7 +63,7 @@ class VaccinationListActivity : AppCompatActivity() {
                 call: Call<List<Vaccination>>,
                 response: Response<List<Vaccination>>
             ) {
-                Log.d(TAG, "onResponse: ${response.body()}")
+                //Log.d(TAG, "onResponse: ${response.body()}")
                 vaccineList = response.body() ?: listOf<Vaccination>()
                 adapter = VaccinationAdapter(vaccineList)
                 binding.recyclerViewVaccinationList.adapter = adapter
